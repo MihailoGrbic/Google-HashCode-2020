@@ -29,3 +29,4 @@ main_cpp/.vs/main_cpp/v15/.suo
 *.txt
 main_cpp/main_cpp/pch.h
 main_cpp/main_cpp/pch.cpp
+main_cpp/input.h

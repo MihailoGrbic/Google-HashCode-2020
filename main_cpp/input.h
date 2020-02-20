@@ -23,20 +23,26 @@ public:
 	vector<Library> libs;
 };
 
-Input load_input() {
+Input load_input(string filename) {
+	ifstream input(filename + ".txt", ios::in);
 	Input I;
-	cin >> I.B >> I.L >> I.D;
+	input >> I.B >> I.L >> I.D;
 	for (int i = 0; i < I.B; i++) {
 		int s;
-		cin >> s;
+		input >> s;
 		I.S.push_back(s);
 	}
 	for (int i = 0; i < I.L; i++) {
 		Library lib;
+		lib.index = i;
 		input >> lib.N >> lib.T >> lib.M;
 		for (int k = 0; k < lib.N; k++) {
+			int id;
+			input >> id;
+			lib.B.push_back(id);
 		}
 		I.libs.push_back(lib);
+		
 	}
 	return I;
 }
