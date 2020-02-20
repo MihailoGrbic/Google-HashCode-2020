@@ -1,8 +1,14 @@
+#ifndef INPUT_H
+#define INPUT_H
+
+
 #include <vector>
 #include <string>
 #include <iostream>
 
 using namespace std;
+
+
 
 class Library {
 public:
@@ -20,14 +26,14 @@ public:
 Input load_input() {
 	Input I;
 	cin >> I.B >> I.L >> I.D;
-	for (int i = 0; i < B; i++) {
+	for (int i = 0; i < I.B; i++) {
 		int s;
 		cin >> s;
 		I.S.push_back(s);
 	}
-	for (int i = 0; i < L; i++) {
+	for (int i = 0; i < I.L; i++) {
 		Library L;
-		for (int j = 0; j < L; j++) {
+		for (int j = 0; j < I.L; j++) {
 			cin >> L.N >> L.T >> L.M;
 			for (int k = 0; k < L.N; k++) {
 				int id;
@@ -38,3 +44,5 @@ Input load_input() {
 		I.libs.push_back(L);
 	}
 }
+
+#endif // INPUT_H
