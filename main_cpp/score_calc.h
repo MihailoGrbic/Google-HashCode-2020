@@ -19,4 +19,5 @@ int score(Input I, Output O) {
     for (int book_id : scanned_books) {
         score += I.S[book_id];
     }
+    return score;
 }
