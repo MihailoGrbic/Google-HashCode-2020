@@ -12,6 +12,7 @@ using namespace std;
 class Library {
 public:
 	int N, T, M;
+	int index;
 	vector<int> B;
 };
 
@@ -33,7 +34,7 @@ Input load_input(string filename) {
 	}
 	for (int i = 0; i < I.L; i++) {
 		Library lib;
-			
+		lib.index = i;
 		input >> lib.N >> lib.T >> lib.M;
 		for (int k = 0; k < lib.N; k++) {
 			int id;
