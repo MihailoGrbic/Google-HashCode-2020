@@ -23,34 +23,35 @@ public:
 
 int max(int a, int b) { return (a > b) ? a : b; }
 
-//// Returns the maximum value that  
-//// can be put in a knapsack of capacity W  
-//int knapSack(int W, vector<dp_lib> dp_libs, int n)
-//{
-//
-//	// Base Case  
-//	if (n == 0 || W == 0)
-//		return 0;
-//
-//	int wt = dp_libs[n - 1].signtime;
-//	double val = dp_libs[n - 1].average_output * min(W - wt, dp_libs[n - 1].lifetime);
-//
-//
-//	// If weight of the nth item is more  
-//	// than Knapsack capacity W, then  
-//	// this item cannot be included 
-//	// in the optimal solution  
-//	if (wt > W)
-//		return knapSack(W, dp_libs, n - 1);
-//
-//	// Return the maximum of two cases:  
-//	// (1) nth item included  
-//	// (2) not included  
-//	else return max(val + knapSack(W - wt, dp_libs, n - 1),
-//		knapSack(W, dp_libs, n - 1));
-//}
+// Returns the maximum value that  
+// can be put in a knapsack of capacity W  
+int knapSack(int W, vector<dp_lib> dp_libs, int n)
+{
 
-int K[30001][30001];
+	// Base Case  
+	if (n == 0 || W == 0)
+		return 0;
+
+	int wt = dp_libs[n - 1].signtime;
+	double val = dp_libs[n - 1].average_output * min(W - wt, dp_libs[n - 1].lifetime);
+
+
+	// If weight of the nth item is more  
+	// than Knapsack capacity W, then  
+	// this item cannot be included 
+	// in the optimal solution  
+	if (wt > W)
+		return knapSack(W, dp_libs, n - 1);
+
+	// Return the maximum of two cases:  
+	// (1) nth item included  
+	// (2) not included  
+	else return max(val + knapSack(W - wt, dp_libs, n - 1),
+		knapSack(W, dp_libs, n - 1));
+}
+
+int K[10001][10001];
+string filename = "b_read_on";
 // Prints the items which are put in a knapsack of capacity W 
 void printknapSack(int W, vector<dp_lib> dp_libs, int n)
 {
@@ -79,9 +80,10 @@ void printknapSack(int W, vector<dp_lib> dp_libs, int n)
 
 	// stores the result of Knapsack 
 	int res = K[n][W];
-	printf("%d\n", res);
+	//printf("%d\n", res);
 
 	w = W;
+	ofstream output(filename + "_libs.txt");
 	for (i = n; i > 0 && res > 0; i--) {
 
 		// either the result comes from the top 
@@ -94,7 +96,7 @@ void printknapSack(int W, vector<dp_lib> dp_libs, int n)
 		else {
 
 			// This item is included. 
-			cout << dp_libs[i - 1].index << " ";
+			output << dp_libs[i - 1].index << " ";
 
 			// Since this weight is included its  
 			// value is deducted 
@@ -102,11 +104,12 @@ void printknapSack(int W, vector<dp_lib> dp_libs, int n)
 			w = w - wt[i - 1];
 		}
 	}
+	output.close();
 }
 
 int main()
 {
-    string filename = "b_read_on";
+    
 
     Input I = load_input(filename);
 

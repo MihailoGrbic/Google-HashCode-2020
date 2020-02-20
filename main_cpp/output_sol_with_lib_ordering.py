@@ -1,14 +1,14 @@
-import matplotlib.pyplot as plt
-import numpy as np
-import imageio
 
-for name in ["a_example", "b_read_on", "c_incunabula", "d_tough_choices", "e_so_many_books", "f_libraries_of_the_world"]:
+import numpy as np
+
+# for name in ["a_example", "b_read_on", "c_incunabula", "d_tough_choices", "e_so_many_books", "f_libraries_of_the_world"]:
+for name in ["b_read_on", "e_so_many_books", "f_libraries_of_the_world"]:
 
 # for name in ["a_example"]:
 
     with open(name + '.txt', 'r') as f:
 
-        libs_ordering = map(int, open(name + "_libs.txt", "r").read().split())
+        libs_ordering = list(map(int, open(name + "_libs.txt", "r").read().split()))
 
         b, l, d = [int(x) for x in next(f).split()]
         print("books ", b)
@@ -42,7 +42,7 @@ for name in ["a_example", "b_read_on", "c_incunabula", "d_tough_choices", "e_so_
 
         books_seen_already = [False] * len(book_values)
 
-        outf.write(str(l) + "\n")
+        outf.write(str(len(libs_ordering)) + "\n")
         for libi in libs_ordering:
             outf.write(str(libi) + " " + str(len(libs[libi])) + "\n")
 
