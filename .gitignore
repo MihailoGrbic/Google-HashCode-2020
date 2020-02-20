@@ -3,3 +3,7 @@
 *.exe
 *.o
 *.cbp
+
+bin/
+cmake-build-debug/
+.idea
