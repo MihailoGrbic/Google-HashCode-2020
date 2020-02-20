@@ -33,7 +33,6 @@ Input load_input(string filename) {
 	}
 	for (int i = 0; i < I.L; i++) {
 		Library lib;
-			
 		input >> lib.N >> lib.T >> lib.M;
 		for (int k = 0; k < lib.N; k++) {
 			int id;
@@ -41,7 +40,6 @@ Input load_input(string filename) {
 			lib.B.push_back(id);
 		}
 		I.libs.push_back(lib);
-		
 	}
 	return I;
 }
