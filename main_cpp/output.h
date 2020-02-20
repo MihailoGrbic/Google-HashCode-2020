@@ -1,16 +1,19 @@
+#pragma once
 #include <vector>
 
 using namespace std;
 
 class LibraryOut {
+public:
 	int Y, K;
 	vector<int> books;
-}
+};
 
 class Output {
+public:
 	int A;
 	vector<LibraryOut> L;
-}
+};
 
 void print_output(Output O) {
 	cout << O.A << '\n';
