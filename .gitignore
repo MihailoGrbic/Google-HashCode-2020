@@ -4,3 +4,7 @@
 *.o
 *.cbp
 *.layout
+bin/
+cmake-build-debug/
+.idea
+
