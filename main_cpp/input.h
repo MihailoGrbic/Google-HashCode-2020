@@ -37,4 +37,5 @@ Input load_input() {
 		}
 		I.libs.push_back(L);
 	}
+	return I;
 }
