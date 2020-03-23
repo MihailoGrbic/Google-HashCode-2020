@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1582223054 source:c:\personal_professional\competitions and qualifications\google-hashcode-2020\main_cpp\dp.cpp
+1582223789 source:c:\personal_professional\competitions and qualifications\google-hashcode-2020\main_cpp\dp.cpp
 	"input.h"
 	"input.h"
 
-1582223033 c:\personal_professional\competitions and qualifications\google-hashcode-2020\main_cpp\input.h
+1582223777 c:\personal_professional\competitions and qualifications\google-hashcode-2020\main_cpp\input.h
 	<vector>
 	<string>
 	<iostream>

@@ -27,6 +27,7 @@
 // 17.4.1.2 Headers
 
 // C
+#include "pch.h"
 #ifndef _GLIBCXX_NO_ASSERT
 #include <cassert>
 #endif
@@ -114,8 +115,3 @@
 #endif
 
 using namespace std;
-
-int main() {
-
-  return 0;
-}

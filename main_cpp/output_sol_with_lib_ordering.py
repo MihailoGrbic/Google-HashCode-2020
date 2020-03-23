@@ -2,7 +2,7 @@
 import numpy as np
 
 # for name in ["a_example", "b_read_on", "c_incunabula", "d_tough_choices", "e_so_many_books", "f_libraries_of_the_world"]:
-for name in ["b_read_on", "e_so_many_books", "f_libraries_of_the_world"]:
+for name in ["b_read_on", "e_so_many_books", "f_libraries_of_the_world", "proba"]:
 
 # for name in ["a_example"]:
 

@@ -23,35 +23,35 @@ public:
 
 int max(int a, int b) { return (a > b) ? a : b; }
 
-// Returns the maximum value that  
-// can be put in a knapsack of capacity W  
-int knapSack(int W, vector<dp_lib> dp_libs, int n)
-{
-
-	// Base Case  
-	if (n == 0 || W == 0)
-		return 0;
-
-	int wt = dp_libs[n - 1].signtime;
-	double val = dp_libs[n - 1].average_output * min(W - wt, dp_libs[n - 1].lifetime);
-
-
-	// If weight of the nth item is more  
-	// than Knapsack capacity W, then  
-	// this item cannot be included 
-	// in the optimal solution  
-	if (wt > W)
-		return knapSack(W, dp_libs, n - 1);
-
-	// Return the maximum of two cases:  
-	// (1) nth item included  
-	// (2) not included  
-	else return max(val + knapSack(W - wt, dp_libs, n - 1),
-		knapSack(W, dp_libs, n - 1));
-}
+//// Returns the maximum value that  
+//// can be put in a knapsack of capacity W  
+//int knapSack(int W, vector<dp_lib> dp_libs, int n)
+//{
+//
+//	// Base Case  
+//	if (n == 0 || W == 0)
+//		return 0;
+//
+//	int wt = dp_libs[n - 1].signtime;
+//	double val = dp_libs[n - 1].average_output * min(W - wt, dp_libs[n - 1].lifetime);
+//	cout
+//
+//	// If weight of the nth item is more  
+//	// than Knapsack capacity W, then  
+//	// this item cannot be included 
+//	// in the optimal solution  
+//	if (wt > W)
+//		return knapSack(W, dp_libs, n - 1);
+//
+//	// Return the maximum of two cases:  
+//	// (1) nth item included  
+//	// (2) not included  
+//	else return max(val + knapSack(W - wt, dp_libs, n - 1),
+//		knapSack(W, dp_libs, n - 1));
+//}
 
 int K[10001][10001];
-string filename = "b_read_on";
+string filename = "proba";
 // Prints the items which are put in a knapsack of capacity W 
 void printknapSack(int W, vector<dp_lib> dp_libs, int n)
 {
@@ -62,9 +62,10 @@ void printknapSack(int W, vector<dp_lib> dp_libs, int n)
 	for (int i = 0; i < dp_libs.size(); i++)
 	{
 		wt.push_back(dp_libs[i].signtime);
-		val.push_back(dp_libs[i].average_output * min(W - wt[i], dp_libs[i].lifetime));
+		val.push_back(dp_libs[i].average_output * min(W - dp_libs[i].signtime, dp_libs[i].lifetime));
+		//cout << val[i] << " " << dp_libs[i].average_output << endl;
 	}
-
+	
 	// Build table K[][] in bottom up manner 
 	for (i = 0; i <= n; i++) {
 		for (w = 0; w <= W; w++) {
@@ -84,7 +85,7 @@ void printknapSack(int W, vector<dp_lib> dp_libs, int n)
 
 	w = W;
 	ofstream output(filename + "_libs.txt");
-	for (i = n; i > 0 && res > 0; i--) {
+	for (i = n; (i > 0) && (res > 0); i--) {
 
 		// either the result comes from the top 
 		// (K[i-1][w]) or from (val[i-1] + K[i-1] 
@@ -127,6 +128,7 @@ int main()
 		new_lib.average_output = average_book * lib.M;
 		new_lib.index = lib.index;
 		dp_libs.push_back(new_lib);
+		//cout << new_lib.average_output << " " << new_lib.signtime << " " << new_lib.lifetime << endl;
 	}
 	 
 	int W = I.D;
